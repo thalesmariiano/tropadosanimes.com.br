@@ -1,11 +1,11 @@
 <script setup>
-  import { RouterLink, RouterView } from 'vue-router'
+  import { RouterView } from 'vue-router'
+  import AppHeader from '@/components/AppHeader.vue'
 </script>
 
 <template>
 
-  <RouterLink to="/" class="mr-10 underline mb-10">Home</RouterLink>
-  <RouterLink to="/category" class="underline mb-10">Animes categorys</RouterLink>
-
+  <AppHeader />
   <RouterView />
+  
 </template>
