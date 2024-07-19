@@ -14,8 +14,7 @@
 		</div>
 
 		<div class="space-x-3">
-		  	<button class="px-5 py-1 border rounded text-white">Sign In</button>
-		  	<button class="px-5 py-1 border border-neutral-900 rounded bg-neutral-800 text-white">Sign Up</button>
+			<RouterLink to="/sign" class="px-5 py-2 border rounded text-white">Entrar</RouterLink>
 		</div>
 	  </header>
 </template>
