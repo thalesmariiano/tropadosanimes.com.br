@@ -17,7 +17,7 @@
 			<div class="w-10 h-10 rounded-full bg-cyan-200">
 					
 			</div>
-			<p class="text-white">@example</p>
+			<p class="hidden md:block text-white">@example</p>
 			<img ref="caretIcon" class="w-5 duration-300 transition-all" src="@/assets/icons/caret-down-fill.svg">
 		</button>
 
@@ -29,19 +29,19 @@
 				<nav class="link-container relative">
 					<ul>
 						<li class="border-b-[.55px] border-neutral-300 z-[999]">
-							<RouterLink to="/profile" class="px-2 py-1 text-white flex gap-x-3 items-center hover:bg-neutral-900 transition-all rounded-t-md">
+							<RouterLink to="/profile" class="px-2 py-2 text-white flex gap-x-3 items-center hover:bg-neutral-900 transition-all rounded-t-md">
 								<img class="w-5" src="@/assets/icons/person-fill.svg">
 								Perfil
 							</RouterLink>
 						</li>
 						<li class="border-b-[.55px] border-neutral-300 z-[999]">
-							<RouterLink to="/configurations" class="px-2 py-1 text-white flex gap-x-3 items-center hover:bg-neutral-900 transition-all">
+							<RouterLink to="/configurations" class="px-2 py-2 text-white flex gap-x-3 items-center hover:bg-neutral-900 transition-all">
 								<img class="w-5" src="@/assets/icons/gear-wide.svg">
 								Configurações
 							</RouterLink>
 						</li>
 						<li class="border-b-[.55px] border-neutral-300 z-[999]">
-							<RouterLink to="/logout" class="px-2 py-1 text-white flex gap-x-3 items-center hover:bg-neutral-900 transition-all">
+							<RouterLink to="/logout" class="px-2 py-2 text-white flex gap-x-3 items-center hover:bg-neutral-900 transition-all">
 								<img class="w-5" src="@/assets/icons/box-arrow-right.svg">
 								Sair
 							</RouterLink>

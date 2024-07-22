@@ -33,27 +33,27 @@
 </script>
 
 <template>
-	<div class="w-full max-w-2xl h-80 bg-neutral-700 rounded-lg shadow-xl">
+	<div class="w-full max-w-2xl h-96 md:80 bg-neutral-700 rounded-lg shadow-xl">
 		<form @submit.prevent="submit" class="w-full h-full flex flex-col justify-between items-center px-3 py-4">
 			<div class="w-full flex flex-col items-center gap-y-3">
-				<div class="w-full flex items-center gap-x-3">
+				<div class="w-full flex flex-col md:flex-row items-center gap-3">
 
-					<div class="w-1/2 flex gap-x-3 items-center">
+					<div class="w-full md:w-1/2 flex gap-x-3 items-center">
 						<input ref="nameInput" class="input" type="text" name="email" placeholder="Seu Nome" autocomplete="off" required>
 					</div>
 
-					<div class="w-1/2 flex gap-x-3 items-center">
+					<div class="w-full md:w-1/2 flex gap-x-3 items-center">
 						<input ref="emailInput" class="input" type="text" name="email" placeholder="Seu email" autocomplete="off" required>
 					</div>
 				</div>
 
-				<div class="w-full flex items-center gap-x-3">
+				<div class="w-full flex flex-col md:flex-row items-center gap-3">
 
-					<div class="w-1/2 flex gap-x-3 items-center">
+					<div class="w-full md:w-1/2 flex gap-x-3 items-center">
 						<input ref="passInput" class="input" type="password" name="password" placeholder="Sua senha" autocomplete="off" required>
 					</div>
 
-					<div class="w-1/2 flex gap-x-3 items-center">
+					<div class="w-full md:w-1/2 flex gap-x-3 items-center">
 						<input ref="confirmPassInput" class="input" type="password" name="password" placeholder="Confirme sua senha" autocomplete="off" required>
 					</div>
 				</div>
@@ -63,7 +63,7 @@
 				</div>
 			</div>
 
-			<div class="w-full flex justify-between items-center">
+			<div class="w-full flex gap-3 justify-between items-center">
 				<button class="register-button" type="submit">Registrar</button>
 
 				<button @click="router.push({ name: 'signin' })" class="enter-button" type="button">Entrar</button>

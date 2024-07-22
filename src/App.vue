@@ -7,7 +7,7 @@
 
   <div class="w-full h-full flex flex-col">
     <AppHeader />
-    <RouterView />
+    <RouterView class="p-6"/>
   </div>
   
 </template>
