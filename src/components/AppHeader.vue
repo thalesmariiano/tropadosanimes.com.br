@@ -13,8 +13,8 @@
 			<h1 class="text-white font-bold text-3xl">Tropa dos Animes</h1>
 
 			<nav class="items-center gap-x-5 ml-12 hidden sm:flex">
-				<RouterLink to="/" class="font-semibold text-white hover:underline">Home</RouterLink>
-			  	<RouterLink to="/categorys" class="font-semibold text-white hover:underline">Categorys</RouterLink>
+				<RouterLink to="/" class="font-semibold text-white hover:underline">Início</RouterLink>
+			  	<RouterLink to="/category" class="font-semibold text-white hover:underline">Categorias</RouterLink>
 			</nav>
 		</div>
 

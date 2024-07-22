@@ -35,16 +35,16 @@
 							</RouterLink>
 						</li>
 						<li class="border-b-[.55px] border-neutral-300 z-[999]">
-							<RouterLink to="/configurations" class="px-2 py-2 text-white flex gap-x-3 items-center hover:bg-neutral-900 transition-all">
+							<RouterLink to="/configuration" class="px-2 py-2 text-white flex gap-x-3 items-center hover:bg-neutral-900 transition-all">
 								<img class="w-5" src="@/assets/icons/gear-wide.svg">
 								Configurações
 							</RouterLink>
 						</li>
 						<li class="border-b-[.55px] border-neutral-300 z-[999]">
-							<RouterLink to="/logout" class="px-2 py-2 text-white flex gap-x-3 items-center hover:bg-neutral-900 transition-all">
+							<button class="w-full px-2 py-2 text-white flex gap-x-3 items-center hover:bg-neutral-900 transition-all">
 								<img class="w-5" src="@/assets/icons/box-arrow-right.svg">
 								Sair
-							</RouterLink>
+							</button>
 						</li>
 					</ul>
 				</nav>
