@@ -27,9 +27,9 @@
 		>
 			<div v-if="isOpened" class="absolute -bottom-[19rem] -right-2 w-44 h-72 bg-neutral-800 rounded-md shadow-lg">
 				<nav class="link-container relative">
-					<ul>
+					<ul class="py-0.5">
 						<li class="border-b-[.55px] border-neutral-300 z-[999]">
-							<RouterLink to="/profile" class="px-2 py-2 text-white flex gap-x-3 items-center hover:bg-neutral-900 transition-all rounded-t-md">
+							<RouterLink to="/profile" class="px-2 py-2 text-white flex gap-x-3 items-center hover:bg-neutral-900 transition-all rounded-md">
 								<img class="w-5" src="@/assets/icons/person-fill.svg">
 								Perfil
 							</RouterLink>
