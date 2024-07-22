@@ -17,6 +17,7 @@
 			<div class="w-10 h-10 rounded-full bg-cyan-200">
 					
 			</div>
+			<p class="text-white">@example</p>
 			<img ref="caretIcon" class="w-5 duration-300 transition-all" src="@/assets/icons/caret-down-fill.svg">
 		</button>
 
@@ -24,7 +25,7 @@
 			enter-active-class="animate__animated animate__fadeIn"
  			leave-active-class="animate__animated animate__fadeOut"
 		>
-			<div v-if="isOpened" class="absolute -bottom-[19rem] -left-24 w-44 h-72 bg-neutral-800 rounded-md shadow-lg">
+			<div v-if="isOpened" class="absolute -bottom-[19rem] -right-2 w-44 h-72 bg-neutral-800 rounded-md shadow-lg">
 				<nav class="link-container relative">
 					<ul>
 						<li class="border-b-[.55px] border-neutral-300 z-[999]">
