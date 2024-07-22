@@ -5,7 +5,9 @@
 
 <template>
 
-  <AppHeader />
-  <RouterView />
+  <div class="w-full h-full flex flex-col">
+    <AppHeader />
+    <RouterView />
+  </div>
   
 </template>
