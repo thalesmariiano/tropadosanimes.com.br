@@ -60,14 +60,22 @@
 </script>
 
 <template>
+	<h1 class="text-white text-4xl font-bold mb-10">Faça login</h1>
+
 	<div class="w-96 h-96 bg-neutral-700 rounded-lg shadow-xl">
-		<form @submit.prevent="submit" action="/" method="POST" class="w-full h-full flex flex-col justify-center items-center">
+		<form @submit.prevent="submit" id="registerForm" class="w-full h-full flex flex-col justify-center items-center">
 
 			<p ref="messageElement" class="text-red-500 mb-3" v-show="showMessage">{{ responseMessage }}</p>
 
 			<div class="flex flex-col gap-3">
-				<input ref="emailInput" class="input" name="email" type="text" placeholder="Seu email" autocomplete="off" required>
-				<input ref="passInput" class="input" name="password" type="password" placeholder="Sua senha" autocomplete="off" required>
+				<label class="w-full flex gap-2 items-center rounded-lg border border-neutral-300 p-2">
+					<img src="@/assets/icons/envelope-fill.svg">
+					<input ref="emailInput" class="input" name="email" type="text" placeholder="Seu email" autocomplete="off" required>
+				</label>
+				<label class="w-full flex gap-2 items-center rounded-lg border border-neutral-300 p-2">
+					<img src="@/assets/icons/lock-fill.svg">
+					<input ref="passInput" class="input" name="password" type="password" placeholder="Sua senha" autocomplete="off" required>
+				</label>
 				<button class="w-64 p-2 bg-green-700 text-white text-lg font-bold rounded-lg hover:bg-green-600 transition-all" type="submit">Entrar</button>
 			</div>
 
@@ -82,7 +90,7 @@
 
 <style>
 	.input {
-		@apply w-64 p-2 text-white rounded-lg bg-transparent border border-neutral-300 placeholder:text-neutral-300;
+		@apply w-full text-white bg-transparent placeholder:text-neutral-300 outline-none
 	}
 
 	.invalid-input {

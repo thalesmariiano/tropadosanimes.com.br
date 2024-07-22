@@ -4,7 +4,7 @@
 
 <template>
 
-	<section class="w-full h-full flex justify-center items-center">
+	<section class="w-full h-full flex flex-col justify-center items-center">
 		<SignInComponent />
 	</section>
 
