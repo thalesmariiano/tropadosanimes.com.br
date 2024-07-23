@@ -4,26 +4,24 @@
 	
 	const router = useRouter()
 
-	const emailInput      = ref(null)
-	const passInput       = ref(null)
+	const email = ref(null)
+	const pass  = ref(null)
 
-	const showMessage     = ref(false)
 	const responseMessage = ref(null)
 	const messageElement  = ref(null)
 	
 	const submit = async () => {
-		showMessage.value = false
-		emailInput.value.classList.remove('invalid-input')
-		passInput.value.classList.remove('invalid-input')
+		responseMessage.value = ''
+		email.value.parentElement.classList.remove('invalid-input')
+		pass.value.parentElement.classList.remove('invalid-input')
 
 		try{
 			const { data } = await axios.post('http://localhost:8080/signin', {
-				email: emailInput.value.value,
-				password: passInput.value.value
+				email: email.value.value,
+				password: pass.value.value
 			})
 
 			responseMessage.value = data.message
-			showMessage.value = true
 			messageElement.value.style.color = "lightgreen"
 
 			sessionStorage.setItem('session', data.token)
@@ -31,13 +29,10 @@
 		}catch({ response }){
 			if(response.status === 401){
 				responseMessage.value = response.data.message
-				showMessage.value = true
 				messageElement.value.style.color = ""
 
-				emailInput.value.classList.add('invalid-input')
-				passInput.value.classList.add('invalid-input')
-			}else if(response.status === 500){
-				console.log(response)
+				email.value.parentElement.classList.add('invalid-input')
+				pass.value.parentElement.classList.add('invalid-input')
 			}
 		}
 	}
@@ -65,18 +60,18 @@
 	<div class="w-96 h-96 bg-neutral-700 rounded-lg shadow-xl">
 		<form @submit.prevent="submit" id="registerForm" class="w-full h-full flex flex-col justify-center items-center">
 
-			<p ref="messageElement" class="text-red-500 mb-3" v-show="showMessage">{{ responseMessage }}</p>
+			<p ref="messageElement" class="text-red-500 mb-3">{{ responseMessage }}</p>
 
-			<div class="flex flex-col gap-3">
+			<div class="w-72 flex flex-col gap-3">
 				<label class="w-full flex gap-2 items-center rounded-lg border border-neutral-300 p-2">
 					<img src="@/assets/icons/envelope-fill.svg">
-					<input ref="emailInput" class="input" name="email" type="text" placeholder="Seu email" autocomplete="off" required>
+					<input ref="email" class="input" name="email" type="email" placeholder="Seu email" autocomplete="off" required>
 				</label>
 				<label class="w-full flex gap-2 items-center rounded-lg border border-neutral-300 p-2">
 					<img src="@/assets/icons/lock-fill.svg">
-					<input ref="passInput" class="input" name="password" type="password" placeholder="Sua senha" autocomplete="off" required>
+					<input ref="pass" class="input" name="password" type="password" placeholder="Sua senha" autocomplete="off" required>
 				</label>
-				<button class="w-64 p-2 bg-green-700 text-white text-lg font-bold rounded-lg hover:bg-green-600 transition-all" type="submit">Entrar</button>
+				<button class="w-full p-2 bg-green-700 text-white text-lg font-bold rounded-lg hover:bg-green-600 transition-all mx-auto" type="submit">Entrar</button>
 			</div>
 
 			<button class="hover:underline text-white py-2 mt-2" type="button">Esqueceu a senha?</button>
