@@ -1,7 +1,8 @@
 <script setup>
-	import { ref } from 'vue'
+	import { ref, onMounted } from 'vue'
 	import { useRouter } from 'vue-router'
 	import InputWarning from './InputWarning.vue'
+	import { verifyErrorField, validateForm } from '@/utils/formUtils';
 
 	const router = useRouter()
 
@@ -10,19 +11,45 @@
 	const email = ref(null)
 	const pass  = ref(null)
 
-	const submiting = ref(false)
-
+	const name_warning  = ref('')
 	const email_warning = ref('')
 	const user_warning  = ref('')
+	const pass_warning  = ref('')
+
+	const validate = validateForm()
+	
+	onMounted(() => {
+		validate.setFields([
+			{
+				input: name.value,
+				warning: name_warning
+			},
+			{
+				input: email.value,
+				warning: email_warning
+			},
+			{
+				input: pass.value,
+				warning: pass_warning
+			},
+			{
+				input: user.value,
+				warning: user_warning
+			}
+		])
+	})
+
+	
+	const submiting = ref(false)
 	
 	function submit(){
+		validate.removeErrors()
+
+		if(validate.isEmpty()){
+			validate.showError()
+			return
+		}
 		submiting.value = true
-
-		email.value.parentElement.classList.remove('invalid-input')
-		user.value.parentElement.classList.remove('invalid-input')
-
-		email_warning.value = ''
-		user_warning.value  = ''
 
 		axios.post('http://localhost:8080/signup', {
 			name: name.value.value,
@@ -53,7 +80,7 @@
 		})
 	}
 
-	const verifyErrorField = (field, message) => message.split(' ').filter(v => v === field).length
+	
 
 </script>
 
@@ -66,14 +93,19 @@
 
 				<div class="w-full flex flex-col md:flex-row items-start gap-4">
 
-					<div class="w-full md:w-1/2">
+					<div class="w-full md:w-1/2 relative">
 						<label>
 							<span class="text-white ml-1 mb-1">Seu nome:</span>
 							<div class="w-full flex gap-2 items-center rounded-lg border border-neutral-300 p-2">
 								<img src="@/assets/icons/person-fill.svg">
-								<input ref="name" class="input" type="text" name="name" placeholder="Ex: Cleber Alves" autocomplete="off" required>
+								<input @focus="name_warning = ''" ref="name" class="input" type="text" name="name" placeholder="Ex: Cleber Alves" autocomplete="off">
 							</div>
 						</label>
+						<InputWarning
+							class="absolute top-[4.3rem] -left-1"
+							:message="name_warning"
+							v-show="name_warning"
+						/>
 					</div>
 
 					<div class="w-full md:w-1/2 relative">
@@ -81,7 +113,7 @@
 							<span class="text-white ml-1 mb-1">Seu email:</span>
 							<div class="w-full flex gap-2 items-center rounded-lg border border-neutral-300 p-2">
 								<img src="@/assets/icons/envelope-fill.svg">
-								<input @focus="email_warning = ''" ref="email" class="input" type="email" name="email" placeholder="Ex: cleber@alves.com" autocomplete="off" required>
+								<input @focus="email_warning = ''" ref="email" class="input" type="email" name="email" placeholder="Ex: cleber@alves.com" autocomplete="off">
 							</div>	
 						</label>
 						<InputWarning
@@ -94,14 +126,19 @@
 
 				<div class="w-full flex flex-col md:flex-row items-start gap-3">
 
-					<div class="w-full md:w-1/2">
+					<div class="w-full md:w-1/2 relative">
 						<label>
 							<label class="text-white ml-1 mb-1">Sua senha:</label>
 							<div class="w-full flex gap-2 items-center rounded-lg border border-neutral-300 p-2">
 								<img src="@/assets/icons/lock-fill.svg">
-								<input ref="pass" class="input" type="password" name="password" placeholder="********" autocomplete="off" required>
+								<input @focus="pass_warning = ''" ref="pass" class="input" type="password" name="password" placeholder="********" autocomplete="off">
 							</div>
 						</label>
+						<InputWarning
+							class="absolute top-[4.3rem] -left-1"
+							:message="pass_warning"
+							v-show="pass_warning"
+						/>
 					</div>
 
 					<div class="w-full md:w-1/2 relative">
@@ -109,7 +146,7 @@
 							<label class="text-white ml-1 mb-2">Seu username:</label>
 							<div class="w-full flex gap-2 items-center rounded-lg border border-neutral-300 p-2">
 								<img class="w-5" src="@/assets/icons/at.svg">
-								<input @focus="user_warning = ''" ref="user" class="input" type="text" name="user" placeholder="Ex: cleber_alves123" autocomplete="off" required>
+								<input @focus="user_warning = ''" ref="user" class="input" type="text" name="user" placeholder="Ex: cleber_alves123" autocomplete="off">
 							</div>
 						</label>
 						<InputWarning
@@ -139,7 +176,7 @@
 		width: 20px;
 		height: 20px;
 		border-radius: 100%;
-		border-top: 3px solid cyan;
+		border-top: 3px solid white;
 		border-bottom: 3px solid cyan;
 		border-left: 3px solid cyan;
 		border-right: 3px solid white;
